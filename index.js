@@ -11,6 +11,8 @@ const env = {
   validade: require('./src/env/env.js').env.validade
 };
 
+const { dcu } = require('./src/dcu/dcu.js');
+
 function showHelpAndExit() {
   program.help();
   process.exit(1);
@@ -21,6 +23,7 @@ program
   .description('A CLI to manage OCC development at Driven.cx.')
   .option('-s, --start', 'start the environment setup')
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
+  .option('-g, --grab', 'start grab on the current environment')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -56,4 +59,9 @@ if (program.env) {
 if (!env.validade()) {
   console.log('.env not found, use the -s option to setup the environment.');
   process.exit(1);
+}
+
+if (program.grab) {
+  console.log("--grab");
+  dcu.grab();
 }

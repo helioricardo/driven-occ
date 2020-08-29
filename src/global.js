@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function parseObjectToStrings(obj) {
   let strings = [];
 
@@ -9,3 +11,11 @@ function parseObjectToStrings(obj) {
 }
 
 exports.parseObjectToStrings = parseObjectToStrings;
+
+function mkdirIfNotExists(path) {
+  if (fs.existsSync(path)) return;
+
+  fs.mkdirSync(path);
+}
+
+exports.mkdirIfNotExists = mkdirIfNotExists;

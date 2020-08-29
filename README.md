@@ -27,6 +27,12 @@ Get the current enviroment
 npx docc -e current
 ```
 
+#### DCU Commands
+Grabing the current environment data
+```sh
+npx docc -g
+```
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
