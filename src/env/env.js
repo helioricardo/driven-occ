@@ -31,7 +31,7 @@ function promptAccessInfo() {
 
 const env = {
   hasEnv: () => {
-    return fs.existsSync('.env');
+    return fs.existsSync(".env");
   },
 
   promptEnvData: async () => {
@@ -49,34 +49,37 @@ const env = {
       envFile.OCC_ADMIN_URL = adminUrl;
       envFile.OCC_APP_KEY = appKey;
     } else {
-      envFile.ACTIVE_ENV = process.env.ACTIVE_ENV || '';
-      envFile.OCC_ADMIN_URL = process.env.OCC_ADMIN_URL || '';
-      envFile.OCC_APP_KEY = process.env.OCC_APP_KEY || '';
+      envFile.ACTIVE_ENV = process.env.ACTIVE_ENV || "";
+      envFile.OCC_ADMIN_URL = process.env.OCC_ADMIN_URL || "";
+      envFile.OCC_APP_KEY = process.env.OCC_APP_KEY || "";
     }
 
-    constants.env.list.forEach(envName => {
+    constants.env.list.forEach((envName) => {
       if (envName == selectedEnv) {
         envFile[`OCC_${envName}_ADMIN_URL`] = adminUrl;
         envFile[`OCC_${envName}_APP_KEY`] = appKey;
       } else {
-        envFile[`OCC_${envName}_ADMIN_URL`] = process.env[`OCC_${envName}_ADMIN_URL`] || '';
-        envFile[`OCC_${envName}_APP_KEY`] = process.env[`OCC_${envName}_APP_KEY`] || '';
+        envFile[`OCC_${envName}_ADMIN_URL`] =
+          process.env[`OCC_${envName}_ADMIN_URL`] || "";
+        envFile[`OCC_${envName}_APP_KEY`] =
+          process.env[`OCC_${envName}_APP_KEY`] || "";
       }
     });
 
-    fs.writeFileSync('.env', parseObjectToStrings(envFile));
+    fs.writeFileSync(".env", parseObjectToStrings(envFile));
   },
 
   get: (environment) => {
-    if(!environment) return {
-      selectedEnv: process.env.ACTIVE_ENV || '',
-      adminUrl: process.env.OCC_ADMIN_URL || '',
-      appKey: process.env.OCC_APP_KEY || ''
-    };
+    if (!environment)
+      return {
+        selectedEnv: process.env.ACTIVE_ENV || "",
+        adminUrl: process.env.OCC_ADMIN_URL || "",
+        appKey: process.env.OCC_APP_KEY || "",
+      };
 
     return {
-      adminUrl: process.env[`OCC_${environment}_ADMIN_URL`] || '',
-      appKey: process.env[`OCC_${environment}_APP_KEY`] || ''
+      adminUrl: process.env[`OCC_${environment}_ADMIN_URL`] || "",
+      appKey: process.env[`OCC_${environment}_APP_KEY`] || "",
     };
   },
 
