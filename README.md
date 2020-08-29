@@ -39,6 +39,11 @@ npx docc -r <path>
 ```
 `path` is relative to the project root as in `widgets/widget/DRV\ Banner`
 
+PutAll sends a path to the current environment
+```sh
+npx docc -pa <path>
+```
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md

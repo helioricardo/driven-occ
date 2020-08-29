@@ -25,6 +25,7 @@ program
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
   .option('-g, --grab', 'start grab on the current environment')
   .option('-r, --refresh <path>', 'refresh path')
+  .option('-pa, --putAll <path>', 'upload the entire path')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -70,4 +71,9 @@ if (program.grab) {
 if (program.refresh) {
   console.log("--refresh");
   dcu.refresh(program.refresh);
+}
+
+if (program.putAll) {
+  console.log("--putAll");
+  dcu.putAll(program.putAll);
 }

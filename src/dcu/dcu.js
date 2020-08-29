@@ -17,7 +17,12 @@ const dcu = {
   refresh: (path) => {
     const shellScript = `${DCU_BASE_COMMAND} -e "${path.replace(/\/$/g, '')}"`;
     shell.exec(shellScript, { async: false });
-  }
+  },
+
+  putAll: path => {
+    const shellScript = `${DCU_BASE_COMMAND} -m "${path.replace(/\/$/g, '')}"`;
+    shell.exec(shellScript, { async: false });
+  },
 };
 
 exports.dcu = dcu;
