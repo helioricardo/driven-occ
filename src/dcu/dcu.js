@@ -12,6 +12,11 @@ const dcu = {
 
     const shellScript = `${DCU_BASE_COMMAND} -g -c`;
     shell.exec(shellScript, { async: false });
+  },
+
+  refresh: (path) => {
+    const shellScript = `${DCU_BASE_COMMAND} -e "${path.replace(/\/$/g, '')}"`;
+    shell.exec(shellScript, { async: false });
   }
 };
 

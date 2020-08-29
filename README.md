@@ -33,6 +33,12 @@ Grabing the current environment data
 npx docc -g
 ```
 
+Refreshing a path from the current environment
+```sh
+npx docc -r <path>
+```
+`path` is relative to the project root as in `widgets/widget/DRV\ Banner`
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md

@@ -24,6 +24,7 @@ program
   .option('-s, --start', 'start the environment setup')
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
   .option('-g, --grab', 'start grab on the current environment')
+  .option('-r, --refresh <path>', 'refresh path')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -64,4 +65,9 @@ if (!env.validade()) {
 if (program.grab) {
   console.log("--grab");
   dcu.grab();
+}
+
+if (program.refresh) {
+  console.log("--refresh");
+  dcu.refresh(program.refresh);
 }
