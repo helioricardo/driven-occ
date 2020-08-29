@@ -27,6 +27,8 @@ program
   .option('-r, --refresh <path>', 'refresh path')
   .option('-pa, --putAll <path>', 'upload the entire path')
   .option('-p, --put <file>', 'upload a file')
+  .option('-t, --transfer <file>', 'transfer the file between current and target environment')
+  .option('-ta, --transferAll <path>', 'transfer the entire path between current and target environment')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -82,4 +84,14 @@ if (program.putAll) {
 if (program.put) {
   console.log("--put");
   dcu.put(program.put);
+}
+
+if (program.transfer) {
+  console.log("--transfer");
+  dcu.transfer(program.transfer);
+}
+
+if (program.transferAll) {
+  console.log("--transferAll");
+  dcu.transferAll(program.transferAll);
 }

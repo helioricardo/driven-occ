@@ -50,6 +50,16 @@ npx docc -p <file>
 ```
 `file` is relative to the project root as in `widgets/global/app.js`
 
+Transfer a file between current and target environment
+```sh
+npx docc -t <file>
+```
+
+Transfer the entire path between current and target environment. Used to CI/CD deploys
+```sh
+npx docc -ta <path>
+```
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
