@@ -7,8 +7,11 @@ const env = {
   setup: require('./src/env/setup.js').setup,
   get: require('./src/env/env.js').env.get,
   config: require('./src/env/env.js').env.config,
-  change: require('./src/env/env.js').env.change
+  change: require('./src/env/env.js').env.change,
+  validate: require('./src/env/env.js').env.validate
 };
+
+const { dcu } = require('./src/dcu/dcu.js');
 
 function showHelpAndExit() {
   program.help();
@@ -20,6 +23,12 @@ program
   .description('A CLI to manage OCC development at Driven.cx.')
   .option('-s, --start', 'start the environment setup')
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
+  .option('-g, --grab', 'start grab on the current environment')
+  .option('-r, --refresh <path>', 'refresh path')
+  .option('-pa, --putAll <path>', 'upload the entire path')
+  .option('-p, --put <file>', 'upload a file')
+  .option('-t, --transfer <file>', 'transfer the file between current and target environment')
+  .option('-ta, --transferAll <path>', 'transfer the entire path between current and target environment')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -50,4 +59,39 @@ if (program.env) {
       console.log("The environment operation must be change, config or current.");
       break;
   }
+}
+
+if (!env.validate()) {
+  console.log('.env not found, use the -s option to setup the environment.');
+  process.exit(1);
+}
+
+if (program.grab) {
+  console.log("--grab");
+  dcu.grab();
+}
+
+if (program.refresh) {
+  console.log("--refresh");
+  dcu.refresh(program.refresh);
+}
+
+if (program.putAll) {
+  console.log("--putAll");
+  dcu.putAll(program.putAll);
+}
+
+if (program.put) {
+  console.log("--put");
+  dcu.put(program.put);
+}
+
+if (program.transfer) {
+  console.log("--transfer");
+  dcu.transfer(program.transfer);
+}
+
+if (program.transferAll) {
+  console.log("--transferAll");
+  dcu.transferAll(program.transferAll);
 }

@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "docc": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helioricardo/driven-occ.git"
@@ -22,9 +25,11 @@
   },
   "homepage": "https://github.com/helioricardo/driven-occ#readme",
   "dependencies": {
+    "@oraclecc/dcu": "^1.6.0",
     "commander": "^6.1.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "shelljs": "^0.8.4"
   }
 }
