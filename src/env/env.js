@@ -98,7 +98,14 @@ const env = {
     }
 
     env.writeEnvFile({ selectedEnv, adminUrl, appKey }, true);
-  }
+  },
+
+  validade: (environment) => {
+    if (!env.hasEnv()) return false;
+
+    const { adminUrl, appKey } = env.get(environment);
+    return adminUrl && appKey;
+  },
 };
 
 exports.env = env;

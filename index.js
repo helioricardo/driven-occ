@@ -7,7 +7,8 @@ const env = {
   setup: require('./src/env/setup.js').setup,
   get: require('./src/env/env.js').env.get,
   config: require('./src/env/env.js').env.config,
-  change: require('./src/env/env.js').env.change
+  change: require('./src/env/env.js').env.change,
+  validade: require('./src/env/env.js').env.validade
 };
 
 function showHelpAndExit() {
@@ -50,4 +51,9 @@ if (program.env) {
       console.log("The environment operation must be change, config or current.");
       break;
   }
+}
+
+if (!env.validade()) {
+  console.log('.env not found, use the -s option to setup the environment.');
+  process.exit(1);
 }
