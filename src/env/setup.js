@@ -11,6 +11,6 @@ exports.setup = {
 
     console.log("There is no env file yet, lets fix it");
     const envData = await env.promptEnvData();
-    env.writeEnvFile(envData);
+    env.writeEnvFile(envData, true);
   }
 };

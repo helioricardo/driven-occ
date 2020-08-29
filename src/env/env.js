@@ -41,10 +41,10 @@ const env = {
     return { selectedEnv, adminUrl, appKey };
   },
 
-  writeEnvFile: ({ selectedEnv, adminUrl, appKey }) => {
+  writeEnvFile: ({ selectedEnv, adminUrl, appKey }, setEnvironment) => {
     let envFile = {};
 
-    if (selectedEnv && adminUrl && appKey) {
+    if (selectedEnv && adminUrl && appKey && setEnvironment) {
       envFile.ACTIVE_ENV = selectedEnv;
       envFile.OCC_ADMIN_URL = adminUrl;
       envFile.OCC_APP_KEY = appKey;
@@ -73,6 +73,11 @@ const env = {
     const appKey = process.env.OCC_APP_KEY || '';
 
     console.log(`Environment: ${selectedEnv}\nURL: ${adminUrl}\nKEY: ${appKey}`);
+  },
+
+  config: async () => {
+    const envData = await env.promptEnvData();
+    env.writeEnvFile(envData);
   }
 };
 

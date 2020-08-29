@@ -5,7 +5,8 @@ require("dotenv").config();
 
 const env = {
   setup: require('./src/env/setup.js').setup,
-  get: require('./src/env/env.js').env.get
+  get: require('./src/env/env.js').env.get,
+  config: require('./src/env/env.js').env.config
 };
 
 program
@@ -24,6 +25,7 @@ if (program.env) {
   switch (program.env) {
     case 'config':
       console.log("--env config");
+      env.config();
       break;
     case 'change':
       console.log("--env change");
