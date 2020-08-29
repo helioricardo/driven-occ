@@ -15,8 +15,7 @@ program
 
 if (program.start) {
   console.log("--start");
-  envSetup.start();
-  process.exit(0);
+  env.setup.start();
 }
 
 if (program.env) {
@@ -34,7 +33,4 @@ if (program.env) {
       console.log("The environment operation must be change, config or current");
       break;
   }
-  process.exit(0);
 }
-
-console.log("Use -h for more information.");
