@@ -32,7 +32,8 @@ if (program.env) {
       break;
     case 'current':
       console.log("--env current");
-      env.get();
+      const {selectedEnv, adminUrl, appKey} = env.get();
+      console.log(`Environment: ${selectedEnv}\nURL: ${adminUrl}\nKEY: ${appKey}`);
       break;
     default:
       console.log("The environment operation must be change, config or current");
