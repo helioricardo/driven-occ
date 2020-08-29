@@ -4,18 +4,6 @@ const inquirer = require('inquirer');
 const { constants } = require('../constants.js');
 const { parseObjectToStrings } = require('../global.js');
 
-function promptEnvToSetup(message) {
-  return inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'selectedEnv',
-        message: message || 'Select an environment:',
-        choices: constants.env.list,
-      }
-    ]);
-}
-
 function promptAccessInfo() {
   return inquirer
     .prompt([{
@@ -34,8 +22,18 @@ const env = {
     return fs.existsSync(".env");
   },
 
+  environmentSelector: (message) => {
+    return inquirer
+      .prompt([{
+        type: 'list',
+        name: 'selectedEnv',
+        message: message || 'Select an environment:',
+        choices: constants.env.list,
+      }]);
+  },
+
   promptEnvData: async () => {
-    const { selectedEnv } = await promptEnvToSetup();
+    const { selectedEnv } = await env.environmentSelector();
     const { adminUrl, appKey } = await promptAccessInfo();
 
     return { selectedEnv, adminUrl, appKey };
@@ -89,7 +87,7 @@ const env = {
   },
 
   change: async () => {
-    const { selectedEnv } = await promptEnvToSetup();
+    const { selectedEnv } = await env.environmentSelector();
     const { adminUrl, appKey } = env.get(selectedEnv);
 
     if (!adminUrl || !appKey) {
@@ -100,7 +98,7 @@ const env = {
     env.writeEnvFile({ selectedEnv, adminUrl, appKey }, true);
   },
 
-  validade: (environment) => {
+  validate: (environment) => {
     if (!env.hasEnv()) return false;
 
     const { adminUrl, appKey } = env.get(environment);

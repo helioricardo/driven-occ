@@ -8,7 +8,7 @@ const env = {
   get: require('./src/env/env.js').env.get,
   config: require('./src/env/env.js').env.config,
   change: require('./src/env/env.js').env.change,
-  validade: require('./src/env/env.js').env.validade
+  validate: require('./src/env/env.js').env.validate
 };
 
 const { dcu } = require('./src/dcu/dcu.js');
@@ -59,7 +59,7 @@ if (program.env) {
   }
 }
 
-if (!env.validade()) {
+if (!env.validate()) {
   console.log('.env not found, use the -s option to setup the environment.');
   process.exit(1);
 }
