@@ -3,8 +3,30 @@
 
 ## How does it work?
 ### Install
+```sh
+npm i helioricardo/driven-occ
+npx docc -s
+```
+
 ### Using
-#### Commands
+
+#### Environment Commands
+
+Config an enviroment
+```sh
+npx docc -e config
+```
+
+Change the enviroment
+```sh
+npx docc -e change
+```
+
+Get the current enviroment
+```sh
+npx docc -e current
+```
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
