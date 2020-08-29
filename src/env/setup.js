@@ -1,12 +1,16 @@
 const { env } = require('./env');
 
-async function start() {
-  console.log("start env setup");
+exports.setup = {
+  start: async () => {
+    console.log("start env setup");
 
-  if(!env.hasEnv()) {
-    console.log("there is no env file yet, lets fix it");
+    if (env.hasEnv()) {
+      console.log('.env found, delete it and try again or use the -e option.');
+      return;
+    }
+
+    console.log("There is no env file yet, lets fix it");
+    const envData = await env.promptEnvData();
+    env.writeEnvFile(envData);
   }
-}
-
-module.exports.start = start;
-
+};

@@ -3,8 +3,9 @@
 const program = require('commander');
 require("dotenv").config();
 
-const envSetup = require('./src/env/setup.js');
-
+const env = {
+  setup: require('./src/env/setup.js').setup
+};
 
 program
   .version(require('./package.json').version)
