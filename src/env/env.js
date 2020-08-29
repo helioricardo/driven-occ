@@ -67,17 +67,34 @@ const env = {
     fs.writeFileSync('.env', parseObjectToStrings(envFile));
   },
 
-  get: () => (
-    {
+  get: (environment) => {
+    if(!environment) return {
       selectedEnv: process.env.ACTIVE_ENV || '',
       adminUrl: process.env.OCC_ADMIN_URL || '',
       appKey: process.env.OCC_APP_KEY || ''
-    }
-  ),
+    };
+
+    return {
+      adminUrl: process.env[`OCC_${environment}_ADMIN_URL`] || '',
+      appKey: process.env[`OCC_${environment}_APP_KEY`] || ''
+    };
+  },
 
   config: async () => {
     const envData = await env.promptEnvData();
     env.writeEnvFile(envData);
+  },
+
+  change: async () => {
+    const { selectedEnv } = await promptEnvToSetup();
+    const { adminUrl, appKey } = env.get(selectedEnv);
+
+    if (!adminUrl || !appKey) {
+      console.log(`${selectedEnv} environment is incomplete, use -e option.`);
+      return;
+    }
+
+    env.writeEnvFile({ selectedEnv, adminUrl, appKey }, true);
   }
 };
 
