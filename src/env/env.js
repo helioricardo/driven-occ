@@ -65,6 +65,14 @@ const env = {
     });
 
     fs.writeFileSync('.env', parseObjectToStrings(envFile));
+  },
+
+  get: () => {
+    const selectedEnv = process.env.ACTIVE_ENV || '';
+    const adminUrl = process.env.OCC_ADMIN_URL || '';
+    const appKey = process.env.OCC_APP_KEY || '';
+
+    console.log(`Environment: ${selectedEnv}\nURL: ${adminUrl}\nKEY: ${appKey}`);
   }
 };
 

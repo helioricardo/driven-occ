@@ -4,7 +4,8 @@ const program = require('commander');
 require("dotenv").config();
 
 const env = {
-  setup: require('./src/env/setup.js').setup
+  setup: require('./src/env/setup.js').setup,
+  get: require('./src/env/env.js').env.get
 };
 
 program
@@ -29,6 +30,7 @@ if (program.env) {
       break;
     case 'current':
       console.log("--env current");
+      env.get();
       break;
     default:
       console.log("The environment operation must be change, config or current");
