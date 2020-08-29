@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/helioricardo/driven-occ/issues"
   },
-  "homepage": "https://github.com/helioricardo/driven-occ#readme"
+  "homepage": "https://github.com/helioricardo/driven-occ#readme",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.3.3"
+  }
 }
