@@ -23,6 +23,11 @@ const dcu = {
     const shellScript = `${DCU_BASE_COMMAND} -m "${path.replace(/\/$/g, '')}"`;
     shell.exec(shellScript, { async: false });
   },
+
+  put: file => {
+    const shellScript = `${DCU_BASE_COMMAND} -t "${file.replace(/\/$/g, '')}"`;
+    shell.exec(shellScript, { async: false });
+  },
 };
 
 exports.dcu = dcu;

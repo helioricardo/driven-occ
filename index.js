@@ -26,6 +26,7 @@ program
   .option('-g, --grab', 'start grab on the current environment')
   .option('-r, --refresh <path>', 'refresh path')
   .option('-pa, --putAll <path>', 'upload the entire path')
+  .option('-p, --put <file>', 'upload a file')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -76,4 +77,9 @@ if (program.refresh) {
 if (program.putAll) {
   console.log("--putAll");
   dcu.putAll(program.putAll);
+}
+
+if (program.put) {
+  console.log("--put");
+  dcu.put(program.put);
 }

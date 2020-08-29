@@ -44,6 +44,12 @@ PutAll sends a path to the current environment
 npx docc -pa <path>
 ```
 
+Put a file to the current environment
+```sh
+npx docc -p <file>
+```
+`file` is relative to the project root as in `widgets/global/app.js`
+
 ## What is the goal of this project?
 
 https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-readable.md
