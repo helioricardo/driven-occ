@@ -14,7 +14,7 @@ program
   .parse(process.argv);
 
 if (program.start) {
-  console.log("START");
+  console.log("--start");
   envSetup.start();
   process.exit(0);
 }
@@ -22,13 +22,13 @@ if (program.start) {
 if (program.env) {
   switch (program.env) {
     case 'config':
-      console.log("ENV config");
+      console.log("--env config");
       break;
     case 'change':
-      console.log("ENV change");
+      console.log("--env change");
       break;
     case 'current':
-      console.log("ENV current");
+      console.log("--env current");
       break;
     default:
       console.log("The environment operation must be change, config or current");
