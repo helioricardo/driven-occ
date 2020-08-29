@@ -10,12 +10,21 @@ const env = {
   change: require('./src/env/env.js').env.change
 };
 
+function showHelpAndExit() {
+  program.help();
+  process.exit(1);
+}
+
 program
   .version(require('./package.json').version)
   .description('A CLI to manage OCC development at Driven.cx.')
   .option('-s, --start', 'start the environment setup')
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
+  .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
+
+const emptyCommand = (process.argv.length == 2);
+if (emptyCommand) showHelpAndExit();
 
 if (program.start) {
   console.log("--start");
@@ -38,7 +47,7 @@ if (program.env) {
       console.log(`Environment: ${selectedEnv}\nURL: ${adminUrl}\nKEY: ${appKey}`);
       break;
     default:
-      console.log("The environment operation must be change, config or current");
+      console.log("The environment operation must be change, config or current.");
       break;
   }
 }
