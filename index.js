@@ -30,6 +30,7 @@ program
   .option('-p, --put <file>',          'dcu: upload a file')
   .option('-t, --transfer <file>',     'dcu: transfer the file between current and target environment')
   .option('-ta, --transferAll <path>', 'dcu: transfer the entire path between current and target environment')
+  .option('-ed, --emailDownload <template>', 'email: download email template')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -95,4 +96,9 @@ if (program.transfer) {
 if (program.transferAll) {
   console.log("--transferAll");
   dcu.transferAll(program.transferAll);
+}
+
+if (program.emailDownload) {
+  console.log("--emailDownload");
+  email.download(program.emailDownload);
 }
