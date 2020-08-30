@@ -21,14 +21,14 @@ function showHelpAndExit() {
 program
   .version(require('./package.json').version)
   .description('A CLI to manage OCC development at Driven.cx.')
-  .option('-s, --start', 'start the environment setup')
-  .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
-  .option('-g, --grab', 'start grab on the current environment')
-  .option('-r, --refresh <path>', 'refresh path')
-  .option('-pa, --putAll <path>', 'upload the entire path')
-  .option('-p, --put <file>', 'upload a file')
-  .option('-t, --transfer <file>', 'transfer the file between current and target environment')
-  .option('-ta, --transferAll <path>', 'transfer the entire path between current and target environment')
+  .option('-s, --start',               'env: start the environment setup')
+  .option('-e, --env <operation>',     'env: start the environment manager [change|config|current]')
+  .option('-g, --grab',                'dcu: start grab on the current environment')
+  .option('-r, --refresh <path>',      'dcu: refresh path')
+  .option('-pa, --putAll <path>',      'dcu: upload the entire path')
+  .option('-p, --put <file>',          'dcu: upload a file')
+  .option('-t, --transfer <file>',     'dcu: transfer the file between current and target environment')
+  .option('-ta, --transferAll <path>', 'dcu: transfer the entire path between current and target environment')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
