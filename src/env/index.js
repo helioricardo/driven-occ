@@ -1,8 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const { constants } = require('../constants.js');
-const { parseObjectToStrings } = require('../global.js');
+const { constants } = require('../constants');
+const { parseObjectToStrings } = require('../global');
 
 function promptAccessInfo() {
   return inquirer

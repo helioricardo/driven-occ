@@ -1,9 +1,9 @@
 const shell = require('shelljs');
 require("dotenv").config();
 
-const { constants } = require('../constants.js');
-const { mkdirIfNotExists } = require('../global.js');
-const { env } = require('../env/env.js');
+const { constants } = require('../constants');
+const { mkdirIfNotExists } = require('../global');
+const { env } = require('../env');
 
 const DCU_BASE_COMMAND = `npx dcu -b ${constants.dcu.paths.src} -n ${process.env.OCC_ADMIN_URL} -k ${process.env.OCC_APP_KEY}`;
 

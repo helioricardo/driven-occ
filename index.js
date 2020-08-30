@@ -4,14 +4,15 @@ const program = require('commander');
 require("dotenv").config();
 
 const env = {
-  setup: require('./src/env/setup.js').setup,
-  get: require('./src/env/env.js').env.get,
-  config: require('./src/env/env.js').env.config,
-  change: require('./src/env/env.js').env.change,
-  validate: require('./src/env/env.js').env.validate
+  setup: require('./src/env/setup').setup,
+  get: require('./src/env').env.get,
+  config: require('./src/env').env.config,
+  change: require('./src/env').env.change,
+  validate: require('./src/env').env.validate
 };
 
-const { dcu } = require('./src/dcu/dcu.js');
+const { dcu } = require('./src/dcu');
+const { email } = require('./src/api/email');
 
 function showHelpAndExit() {
   program.help();

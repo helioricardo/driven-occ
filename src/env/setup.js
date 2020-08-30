@@ -1,4 +1,4 @@
-const { env } = require('./env');
+const { env } = require('./');
 
 exports.setup = {
   start: async () => {
