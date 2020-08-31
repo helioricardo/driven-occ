@@ -61,8 +61,8 @@ if (program.env) {
   }
 }
 
-if (!env.validate()) {
-  console.log('.env not found, use the -s option to setup the environment.');
+if (!program.start && !env.validate()) {
+  console.log(".env not found, use the -s option to setup the environment.");
   process.exit(1);
 }
 
