@@ -19,7 +19,7 @@ const patch = {
     try {
       let data = replace.sync(options);
       if(data[0].hasChanged) {
-        console.log("File successfully patched:", data[0].file);
+        console.log("File successfully patched:", data);
       } else {
         console.log("File already patched! If you still getting errors, contact your tech lead.");
       }
