@@ -8,7 +8,8 @@ const env = {
   get: require('./src/env/env.js').env.get,
   config: require('./src/env/env.js').env.config,
   change: require('./src/env/env.js').env.change,
-  validate: require('./src/env/env.js').env.validate
+  validate: require('./src/env/env.js').env.validate,
+  patch: require('./src/env/patch.js').patch,
 };
 
 const { dcu } = require('./src/dcu/dcu.js');
@@ -24,6 +25,7 @@ program
   .option('-s, --start', 'start the environment setup')
   .option('-e, --env <operation>', 'start the environment manager [change|config|current]')
   .option('-g, --grab', 'start grab on the current environment')
+  .option('-gp, --grabPatch', 'if you get a HTTP error grabbing, try to patch the oracle DCU')
   .option('-r, --refresh <path>', 'refresh path')
   .option('-pa, --putAll <path>', 'upload the entire path')
   .option('-p, --put <file>', 'upload a file')
@@ -59,6 +61,11 @@ if (program.env) {
       console.log("The environment operation must be change, config or current.");
       break;
   }
+}
+
+if (program.grabPatch) {
+  console.log("--grabPatch");
+  env.patch.grabber();
 }
 
 if (!program.start && !env.validate()) {
