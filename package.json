@@ -31,6 +31,8 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "inquirer": "^7.3.3",
-    "shelljs": "^0.8.4"
+    "replace-in-file": "^6.1.0",
+    "shelljs": "^0.8.4",
+    "zip-local": "^0.3.4"
   }
 }

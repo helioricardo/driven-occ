@@ -15,7 +15,7 @@ exports.parseObjectToStrings = parseObjectToStrings;
 function mkdirIfNotExists(path) {
   if (fs.existsSync(path)) return;
 
-  fs.mkdirSync(path);
+  fs.mkdirSync(path, { recursive: true });
 }
 
 exports.mkdirIfNotExists = mkdirIfNotExists;
