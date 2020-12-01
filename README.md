@@ -33,10 +33,16 @@ Grabing the current environment data
 npx docc -g
 ```
 
-Starts Watcher + Browsersync. - `Note: Click here to see how configure Browsersync.`
+Starts Watcher + Browsersync. - **Note: [Click here](https://github.com/eduardokeneeth/oracle-commerce-project-example#browsersync) to see how configure Browsersync.**
 ```sh
 npx docc -d
 ```
+
+Creates widget or element. - **Options:** `widget, element.`
+```sh
+npx docc -c <type>
+```
+`Ps.: You need DesignCodeUtility in the root folder.`
 
 Refreshing a path from the current environment
 ```sh
@@ -74,6 +80,8 @@ https://github.com/18F/open-source-guide/blob/18f-pages/pages/making-readmes-rea
 - [helioricardo/oracle-commerce-cli](https://github.com/helioricardo/oracle-commerce-cli)
 - [leedium/occ-instance-migrator](https://github.com/leedium/occ-instance-migrator)
 - [eduhsm/occ-sse-tools](https://github.com/eduhsm/occ-sse-tools)
+- [eduardokeneeth/oracle-commerce-project-example](https://github.com/eduardokeneeth/oracle-commerce-project-example#browsersync)
+- [eduardokeneeth/oracle-commerce-cli](https://github.com/eduardokeneeth/oracle-commerce-cli)
 
 # Roadmap
 https://trello.com/b/0rtMEjKC/driven-occ
