@@ -9,7 +9,9 @@ exports.constants = {
   },
   dcu: {
     paths: {
-      src: './widgets'
+      src: './widgets',
+      dcu: './DesignCodeUtility/dcuIndex.js',
+      ccw: './DesignCodeUtility/ccwIndex.js',
     }
   }
 }

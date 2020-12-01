@@ -33,6 +33,11 @@ Grabing the current environment data
 npx docc -g
 ```
 
+Starts Watcher + Browsersync. - `Note: Click here to see how configure Browsersync.`
+```sh
+npx docc -d
+```
+
 Refreshing a path from the current environment
 ```sh
 npx docc -r <path>

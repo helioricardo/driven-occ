@@ -26,7 +26,7 @@ const dcu = {
   },
 
   put: file => {
-    const shellScript = `${DCU_BASE_COMMAND} -t "${file.replace(/\/$/g, '')}"`;
+    const shellScript = `${DCU_BASE_COMMAND} -t "${file.replace(/\/$/g, '')}" -i`;
     shell.exec(shellScript, { async: false });
   },
 

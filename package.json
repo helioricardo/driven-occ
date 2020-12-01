@@ -1,6 +1,6 @@
 {
   "name": "driven-occ",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A CLI to manage OCC development at Driven.cx",
   "main": "index.js",
   "scripts": {

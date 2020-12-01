@@ -14,6 +14,9 @@ const env = {
 
 const { dcu } = require('./src/dcu');
 const { email } = require('./src/api/email');
+const { dev } = require('./src/dev');
+const { occEnv } = require('./src/occEnv');
+const { ccw } = require('./src/ccw');
 
 function showHelpAndExit() {
   program.help();
@@ -35,6 +38,8 @@ program
   .option('-el, --emailList', 'list email templates')
   .option('-ed, --emailDownload <template>', 'download email template')
   .option('-eda, --emailDownloadAll', 'download all email templates')
+  .option('-d, --dev', 'start watcher + Browsersync')
+  .option('-c, --create <type>', 'create widget or element [widget|element]')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -44,6 +49,78 @@ if (emptyCommand) showHelpAndExit();
 if (program.start) {
   console.log("--start");
   env.setup.start();
+} else {
+  if (occEnv.validate()) {
+    if (program.dev) {
+      dev.start();
+    }
+
+    if (program.grabPatch) {
+      console.log("--grabPatch");
+      env.patch.grabber();
+    }
+
+    if (!program.start && !env.validate()) {
+      console.log(".env not found, use the -s option to setup the environment.");
+      process.exit(1);
+    }
+
+    if (program.grab) {
+      console.log("--grab");
+      dcu.grab();
+    }
+
+    if (program.refresh) {
+      console.log("--refresh");
+      dcu.refresh(program.refresh);
+    }
+
+    if (program.putAll) {
+      console.log("--putAll");
+      dcu.putAll(program.putAll);
+    }
+
+    if (program.put) {
+      console.log("--put");
+      dcu.put(program.put);
+    }
+
+    if (program.transfer) {
+      console.log("--transfer");
+      dcu.transfer(program.transfer);
+    }
+
+    if (program.transferAll) {
+      console.log("--transferAll");
+      dcu.transferAll(program.transferAll);
+    }
+
+    if (program.emailList) {
+      console.log("--emailList");
+      email.list();
+    }
+
+    if (program.emailDownload) {
+      console.log("--emailDownload");
+      email.download(program.emailDownload);
+    }
+
+    if (program.emailDownloadAll) {
+      console.log("--emailDownloadAll");
+      email.downloadAll();
+    }
+
+    if (program.create) {
+      switch (program.create) {
+        case 'widget':
+          ccw.createWidget();
+          break;
+        case 'element':
+          ccw.createElement();
+          break;
+      }
+    }
+  }
 }
 
 if (program.env) {
@@ -65,59 +142,4 @@ if (program.env) {
       console.log("The environment operation must be change, config or current.");
       break;
   }
-}
-
-if (program.grabPatch) {
-  console.log("--grabPatch");
-  env.patch.grabber();
-}
-
-if (!program.start && !env.validate()) {
-  console.log(".env not found, use the -s option to setup the environment.");
-  process.exit(1);
-}
-
-if (program.grab) {
-  console.log("--grab");
-  dcu.grab();
-}
-
-if (program.refresh) {
-  console.log("--refresh");
-  dcu.refresh(program.refresh);
-}
-
-if (program.putAll) {
-  console.log("--putAll");
-  dcu.putAll(program.putAll);
-}
-
-if (program.put) {
-  console.log("--put");
-  dcu.put(program.put);
-}
-
-if (program.transfer) {
-  console.log("--transfer");
-  dcu.transfer(program.transfer);
-}
-
-if (program.transferAll) {
-  console.log("--transferAll");
-  dcu.transferAll(program.transferAll);
-}
-
-if (program.emailList) {
-  console.log("--emailList");
-  email.list();
-}
-
-if (program.emailDownload) {
-  console.log("--emailDownload");
-  email.download(program.emailDownload);
-}
-
-if (program.emailDownloadAll) {
-  console.log("--emailDownloadAll");
-  email.downloadAll();
 }
