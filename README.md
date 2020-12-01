@@ -44,6 +44,11 @@ npx docc -c <type>
 ```
 `Ps.: You need DesignCodeUtility in the root folder.`
 
+Starts the Server-side Extension Manager. - **Options:** `download, upload, transfer`
+```sh
+npx docc -x <operation>
+```
+
 Refreshing a path from the current environment
 ```sh
 npx docc -r <path>

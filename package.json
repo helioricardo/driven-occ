@@ -1,6 +1,6 @@
 {
   "name": "driven-occ",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A CLI to manage OCC development at Driven.cx",
   "main": "index.js",
   "scripts": {
@@ -26,11 +26,15 @@
   "homepage": "https://github.com/helioricardo/driven-occ#readme",
   "dependencies": {
     "@oraclecc/dcu": "^1.6.0",
+    "archiver": "^5.0.2",
     "axios": "^0.20.0",
     "commander": "^6.1.0",
     "dotenv": "^8.2.0",
+    "extract-zip": "^2.0.1",
+    "form-data": "^3.0.0",
     "fs": "0.0.1-security",
     "inquirer": "^7.3.3",
+    "inquirer-search-list": "^1.2.6",
     "replace-in-file": "^6.1.0",
     "shelljs": "^0.8.4",
     "zip-local": "^0.3.4"

@@ -17,6 +17,7 @@ const { email } = require('./src/api/email');
 const { dev } = require('./src/dev');
 const { occEnv } = require('./src/occEnv');
 const { ccw } = require('./src/ccw');
+const { sse } = require('./src/sse');
 
 function showHelpAndExit() {
   program.help();
@@ -40,6 +41,7 @@ program
   .option('-eda, --emailDownloadAll', 'download all email templates')
   .option('-d, --dev', 'start watcher + Browsersync')
   .option('-c, --create <type>', 'create widget or element [widget|element]')
+  .option('-x, --sse <operation>', 'transfer SSE between current and target environment')
   .on('command:*', () => { showHelpAndExit(); })
   .parse(process.argv);
 
@@ -110,6 +112,20 @@ if (program.start) {
       email.downloadAll();
     }
 
+    if (program.sse) {
+      switch (program.sse) {
+        case 'download':
+          sse.download();
+          break;
+        case 'upload':
+          sse.upload();
+          break;
+        case 'transfer':
+          sse.transfer();
+          break;
+      }
+    }
+    
     if (program.create) {
       switch (program.create) {
         case 'widget':
