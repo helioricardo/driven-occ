@@ -1,5 +1,4 @@
 require('dotenv').config();
-// const shell = require('shelljs');
 const browserSync = require('browser-sync').create();
 const chokidar = require('chokidar');
 const { constants } = require('./constants');
