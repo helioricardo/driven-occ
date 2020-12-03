@@ -3,6 +3,7 @@ const browserSync = require('browser-sync').create();
 const chokidar = require('chokidar');
 const { constants } = require('./constants');
 const { dcu } = require('./dcu');
+const normalize = require('normalize-path');
 
 const Methods = {
   start: () => {
@@ -14,7 +15,7 @@ const Methods = {
   },
 
   fixPath: (path = '') => {
-    const newPath = path.replace(/\\/g, '/');
+    const newPath = normalize(path);
     return newPath;
   },
 

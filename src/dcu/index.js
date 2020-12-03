@@ -16,17 +16,17 @@ const dcu = {
   },
 
   refresh: (path) => {
-    const shellScript = `${DCU_BASE_COMMAND} -e "${path.replace(/\/$/g, '')}"`;
+    const shellScript = `${DCU_BASE_COMMAND} -e "${path}"`;
     shell.exec(shellScript, { async: false });
   },
 
   putAll: path => {
-    const shellScript = `${DCU_BASE_COMMAND} -m "${path.replace(/\/$/g, '')}"`;
+    const shellScript = `${DCU_BASE_COMMAND} -m "${path}"`;
     shell.exec(shellScript, { async: false });
   },
 
   put: file => {
-    const shellScript = `${DCU_BASE_COMMAND} -t "${file.replace(/\/$/g, '')}" -i`;
+    const shellScript = `${DCU_BASE_COMMAND} -t "${file}" -i`;
     shell.exec(shellScript, { async: false });
   },
 
@@ -40,7 +40,7 @@ const dcu = {
 
     const { adminUrl, appKey } = env.get(selectedEnv);
     const dcuBaseCommand = `npx dcu -b ${constants.dcu.paths.src} -n ${adminUrl} -k ${appKey}`;
-    const shellScript = `${dcuBaseCommand} -x "${path.replace(/\/$/g, '')}" -o`;
+    const shellScript = `${dcuBaseCommand} -x "${path}" -o`;
     shell.exec(shellScript, { async: false });
   },
 
@@ -54,7 +54,7 @@ const dcu = {
 
     const { adminUrl, appKey } = env.get(selectedEnv);
     const dcuBaseCommand = `npx dcu -b ${constants.dcu.paths.src} -n ${adminUrl} -k ${appKey}`;
-    const shellScript = `${dcuBaseCommand} -r "${file.replace(/\/$/g, '')}" -o`;
+    const shellScript = `${dcuBaseCommand} -r "${file}" -o`;
     shell.exec(shellScript, { async: false });
   }
 };
